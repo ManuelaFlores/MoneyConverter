@@ -1,0 +1,182 @@
+[
+  {
+    "base": "USD",
+    "results": [
+      {
+        "code": "CAD",
+        "purchase": 1.26,
+        "sale": 1.30
+      },
+      {
+        "code": "CHF",
+        "purchase": 0.93,
+        "sale": 1.0
+      },
+      {
+        "code": "EUR",
+        "purchase": 0.89,
+        "sale": 0.90
+      },
+      {
+        "code": "GBP",
+        "purchase": 0.75,
+        "sale": 0.80
+      },
+      {
+        "code": "JPY",
+        "purchase": 115.39,
+        "sale": 120.00
+      }
+    ]
+  },
+  {
+    "base": "CAD",
+    "results": [
+      {
+        "code": "CHF",
+        "purchase": 0.93,
+        "sale": 1.0
+      },
+      {
+        "code": "EUR",
+        "purchase": 0.89,
+        "sale": 0.90
+      },
+      {
+        "code": "GBP",
+        "purchase": 0.75,
+        "sale": 0.80
+      },
+      {
+        "code": "JPY",
+        "purchase": 115.39,
+        "sale": 120.00
+      },
+      {
+        "code": "USD",
+        "purchase": 1.26,
+        "sale": 1.30
+      }
+    ]
+  },
+  {
+    "base": "CHF",
+    "results": [
+      {
+        "code": "CAD",
+        "purchase": 1.26,
+        "sale": 1.30
+      },
+      {
+        "code": "EUR",
+        "purchase": 0.89,
+        "sale": 0.90
+      },
+      {
+        "code": "GBP",
+        "purchase": 0.75,
+        "sale": 0.80
+      },
+      {
+        "code": "JPY",
+        "purchase": 115.39,
+        "sale": 120.00
+      },
+      {
+        "code": "USD",
+        "purchase": 1.26,
+        "sale": 1.30
+      }
+    ]
+  },
+  {
+    "base": "EUR",
+    "results": [
+      {
+        "code": "CAD",
+        "purchase": 1.26,
+        "sale": 1.30
+      },
+      {
+        "code": "CHF",
+        "purchase": 0.89,
+        "sale": 0.90
+      },
+      {
+        "code": "GBP",
+        "purchase": 0.75,
+        "sale": 0.80
+      },
+      {
+        "code": "JPY",
+        "purchase": 115.39,
+        "sale": 120.00
+      },
+      {
+        "code": "USD",
+        "purchase": 1.13,
+        "sale": 1.30
+      }
+    ]
+  },
+  {
+    "base": "GBP",
+    "results": [
+      {
+        "code": "CAD",
+        "purchase": 1.26,
+        "sale": 1.30
+      },
+      {
+        "code": "CHF",
+        "purchase": 0.89,
+        "sale": 0.90
+      },
+      {
+        "code": "EUR",
+        "purchase": 0.75,
+        "sale": 0.80
+      },
+      {
+        "code": "JPY",
+        "purchase": 115.39,
+        "sale": 120.00
+      },
+      {
+        "code": "USD",
+        "purchase": 1.26,
+        "sale": 1.30
+      }
+    ]
+  },
+  {
+    "base": "JPY",
+    "results": [
+      {
+        "code": "CAD",
+        "purchase": 1.26,
+        "sale": 1.30
+      },
+      {
+        "code": "CHF",
+        "purchase": 0.89,
+        "sale": 0.90
+      },
+      {
+        "code": "EUR",
+        "purchase": 0.75,
+        "sale": 0.80
+      },
+      {
+        "code": "GBP",
+        "purchase": 115.39,
+        "sale": 120.00
+      },
+      {
+        "code": "USD",
+        "purchase": 1.26,
+        "sale": 1.30
+      }
+    ]
+  }
+]

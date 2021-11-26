@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="H7" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black_text_high_emphasis</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

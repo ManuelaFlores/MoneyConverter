@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/circle_shape_white.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_bcp_logo.xml" value="0.196875" />
+        <entry key="app/src/main/res/drawable/ic_cad.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_chf.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_eur.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_european_union.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_flag_of_japan.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_flag_of_japan__bordered_.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_gbp.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_jpy.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/ic_usd.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/rectangle_shape_blue.xml" value="0.3441025641025641" />
+        <entry key="app/src/main/res/drawable/round_white_border.xml" value="10.0" />
+        <entry key="app/src/main/res/drawable/round_white_border_bottom.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/layout/fragment_conversion_calculator.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/fragment_supported_currencies.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/item_supported_currency.xml" value="0.3333333333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

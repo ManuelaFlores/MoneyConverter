@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/conversionCalculator">
+
+
+    <fragment
+        android:id="@+id/conversionCalculator"
+        android:name="com.manuflowers.moneyconversion.ui.screens.conversionCalculator.ConversionCalculatorFragment"
+        tools:layout="@layout/fragment_conversion_calculator"
+        android:label="ConversionCalculator" >
+        <action
+            android:id="@+id/action_conversionCalculator_to_supportedCurrenciesFragment"
+            app:destination="@id/supportedCurrenciesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/supportedCurrenciesFragment"
+        android:name="com.manuflowers.moneyconversion.ui.screens.supportedCurrencies.SupportedCurrenciesFragment"
+        android:label="fragment_supported_currencies"
+        tools:layout="@layout/fragment_supported_currencies" />
+
+</navigation>

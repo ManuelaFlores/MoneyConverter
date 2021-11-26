@@ -1,0 +1,3 @@
+package com.manuflowers.moneyconversion.base
+
+interface BaseViewState

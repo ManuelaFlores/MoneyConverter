@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Money Conversion</string>
+    <string name="united_states_currency_title">United States</string>
+    <string name="union_european_currency_title">European Union</string>
+    <string name="japan_currency_title">Japan</string>
+    <string name="united_kingdom_currency_title">United Kingdom</string>
+    <string name="switzerland_currency_title">Switzerland</string>
+    <string name="canada_currency_title">Canada</string>
+
+    <string name="united_states_currency_label">Dólares A.</string>
+    <string name="union_european_currency_label">Euros</string>
+    <string name="japan_currency_label">Yenes</string>
+    <string name="united_kingdom_currency_label">libras</string>
+    <string name="switzerland_currency_label">Francos</string>
+    <string name="canada_currency_label">Dólares C.</string>
+</resources>
