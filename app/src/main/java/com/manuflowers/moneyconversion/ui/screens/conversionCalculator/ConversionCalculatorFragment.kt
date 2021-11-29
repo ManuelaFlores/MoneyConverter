@@ -2,6 +2,7 @@ package com.manuflowers.moneyconversion.ui.screens.conversionCalculator
 
 import android.os.Bundle
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class ConversionCalculatorFragment : Fragment() {
 
     private val viewModel: ConversionCalculatorViewModel by inject()
-    private val mainViewModel: MainViewModel by sharedViewModel()
+    private val mainViewModel by sharedViewModel<MainViewModel>()
 
     private lateinit var onAmountSendMoneyWatcher: TextWatcher
     private lateinit var onAmountReceiveMoneyWatcher: TextWatcher
@@ -73,13 +74,16 @@ class ConversionCalculatorFragment : Fragment() {
                 editTextReceiveMoneyAmount.removeTextChangedListener(onAmountReceiveMoneyWatcher)
             }
         }
-        textViewSendMoneyLabel.text = getString(viewModel.getLabel(viewModel.state.senMoneyCurrency))
-        textViewReceiveMoneyLabel.text = getString(viewModel.getLabel(viewModel.state.receiveMoneyCurrency))
+        textViewSendMoneyLabel.text =
+            getString(viewModel.getLabel(viewModel.state.senMoneyCurrency))
+        textViewReceiveMoneyLabel.text =
+            getString(viewModel.getLabel(viewModel.state.receiveMoneyCurrency))
     }
 
     private fun setupListeners() {
         textViewSendMoneyLabel.setOnLongClickListener {
             mainViewModel.setOriginValue(isValueFromSendMoneyLabel = true)
+
             findNavController().navigate(R.id.action_conversionCalculator_to_supportedCurrenciesFragment)
             true
         }
@@ -101,21 +105,29 @@ class ConversionCalculatorFragment : Fragment() {
     }
 
     private fun onStateChanged(conversionCalculatorState: ConversionCalculatorState) {
+
     }
 
     private fun onSharedStateChange(mainViewState: MainViewState) {
-        mainViewState.currenciesList.consume()?.let {
-        }
         mainViewState.newCurrencySelected?.consume()?.let {
             mainViewModel.state.isValueFromSendMoney?.let { isValueFromSendMoney ->
                 viewModel.changeCurrencyOfSendMoney(it, isValueFromSendMoney)
                 if (isValueFromSendMoney) {
                     textViewSendMoneyLabel.text = getString(viewModel.getLabel(it))
+
+                    Log.e("-------------", "${it} ---- ${mainViewState.newCurrencySelected.peek()}")
+                    Log.e("SEND_ MONEY CURRENCY", "${viewModel.state.senMoneyCurrency}")
+                    Log.e("SEND_ MONEY CURRENCY", "")
                 } else {
                     textViewReceiveMoneyLabel.text = getString(viewModel.getLabel(it))
                     editTextReceiveMoneyAmount.setText(viewModel.state.receiveMoneyConverted)
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.e("DESTROY", "--------")
     }
 }

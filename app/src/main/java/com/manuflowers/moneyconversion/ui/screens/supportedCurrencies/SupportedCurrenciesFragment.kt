@@ -10,17 +10,23 @@ import androidx.navigation.fragment.findNavController
 import com.manuflowers.moneyconversion.R
 import com.manuflowers.moneyconversion.ui.model.MainViewState
 import com.manuflowers.moneyconversion.ui.screens.supportedCurrencies.list.SupportedCurrenciesAdapter
+import com.manuflowers.moneyconversion.ui.screens.supportedCurrencies.viewmodel.SupportedCurrenciesViewModel
 import com.manuflowers.moneyconversion.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_supported_currencies.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SupportedCurrenciesFragment : Fragment() {
 
-    private val mainViewModel: MainViewModel by sharedViewModel()
+    private val mainViewModel by sharedViewModel<MainViewModel>()
 
-    private val supportedCurrenciesAdapter = SupportedCurrenciesAdapter {
-        mainViewModel.setNewCurrency(it)
-        findNavController().popBackStack()
+    private val viewModel by viewModel<SupportedCurrenciesViewModel>()
+
+    private val supportedCurrenciesAdapter  by lazy {
+        SupportedCurrenciesAdapter(currentCurrencyCode = mainViewModel.state.newCurrencySelected.peek(), onCLickListener = {
+            mainViewModel.setNewCurrency(it)
+            findNavController().popBackStack()
+        })
     }
 
     override fun onCreateView(
@@ -34,6 +40,7 @@ class SupportedCurrenciesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViews()
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

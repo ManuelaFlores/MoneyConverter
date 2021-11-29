@@ -4,7 +4,7 @@
     "results": [
       {
         "code": "CAD",
-        "purchase": 1.26,
+        "purchase": 1.27,
         "sale": 1.30
       },
       {
@@ -24,7 +24,7 @@
       },
       {
         "code": "JPY",
-        "purchase": 115.39,
+        "purchase": 113.20,
         "sale": 120.00
       }
     ]
@@ -34,28 +34,28 @@
     "results": [
       {
         "code": "CHF",
-        "purchase": 0.93,
-        "sale": 1.0
-      },
-      {
-        "code": "EUR",
-        "purchase": 0.89,
-        "sale": 0.90
-      },
-      {
-        "code": "GBP",
-        "purchase": 0.75,
+        "purchase": 0.73,
         "sale": 0.80
       },
       {
+        "code": "EUR",
+        "purchase": 0.70,
+        "sale": 0.77
+      },
+      {
+        "code": "GBP",
+        "purchase": 0.59,
+        "sale": 0.67
+      },
+      {
         "code": "JPY",
-        "purchase": 115.39,
-        "sale": 120.00
+        "purchase": 88.91,
+        "sale": 90.00
       },
       {
         "code": "USD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 0.78,
+        "sale": 0.88
       }
     ]
   },
@@ -64,28 +64,28 @@
     "results": [
       {
         "code": "CAD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 1.38,
+        "sale": 1.48
       },
       {
         "code": "EUR",
-        "purchase": 0.89,
-        "sale": 0.90
+        "purchase": 0.96,
+        "sale": 1.10
       },
       {
         "code": "GBP",
-        "purchase": 0.75,
-        "sale": 0.80
+        "purchase": 0.81,
+        "sale": 0.99
       },
       {
         "code": "JPY",
-        "purchase": 115.39,
-        "sale": 120.00
+        "purchase": 122.31,
+        "sale": 124.31
       },
       {
         "code": "USD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 1.08,
+        "sale": 1.18
       }
     ]
   },
@@ -94,23 +94,23 @@
     "results": [
       {
         "code": "CAD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 1.44,
+        "sale": 1.64
       },
       {
         "code": "CHF",
-        "purchase": 0.89,
-        "sale": 0.90
+        "purchase": 1.04,
+        "sale": 1.24
       },
       {
         "code": "GBP",
-        "purchase": 0.75,
-        "sale": 0.80
+        "purchase": 0.85,
+        "sale": 0.95
       },
       {
         "code": "JPY",
-        "purchase": 115.39,
-        "sale": 120.00
+        "purchase": 127.86,
+        "sale": 147.86
       },
       {
         "code": "USD",
@@ -124,28 +124,28 @@
     "results": [
       {
         "code": "CAD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 1.70,
+        "sale": 1.80
       },
       {
         "code": "CHF",
-        "purchase": 0.89,
-        "sale": 0.90
+        "purchase": 1.23,
+        "sale": 1.43
       },
       {
         "code": "EUR",
-        "purchase": 0.75,
-        "sale": 0.80
+        "purchase": 1.18,
+        "sale": 1.38
       },
       {
         "code": "JPY",
-        "purchase": 115.39,
-        "sale": 120.00
+        "purchase": 151.14,
+        "sale": 151.14
       },
       {
         "code": "USD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 1.33,
+        "sale": 1.55
       }
     ]
   },
@@ -154,28 +154,28 @@
     "results": [
       {
         "code": "CAD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 0.011,
+        "sale": 0.021
       },
       {
         "code": "CHF",
-        "purchase": 0.89,
-        "sale": 0.90
+        "purchase": 0.0082,
+        "sale": 0.00
       },
       {
         "code": "EUR",
-        "purchase": 0.75,
-        "sale": 0.80
+        "purchase": 0.0078,
+        "sale": 0.0098
       },
       {
         "code": "GBP",
-        "purchase": 115.39,
-        "sale": 120.00
+        "purchase": 0.0066,
+        "sale": 0.0089
       },
       {
         "code": "USD",
-        "purchase": 1.26,
-        "sale": 1.30
+        "purchase": 0.0088,
+        "sale": 0.0100
       }
     ]
   }

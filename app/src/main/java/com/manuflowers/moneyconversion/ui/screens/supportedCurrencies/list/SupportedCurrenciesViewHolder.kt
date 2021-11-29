@@ -20,7 +20,11 @@ class SupportedCurrenciesViewHolder private constructor(
         }
     }
 
-    fun bind(conversionBodyView: ConversionBodyView, onClickListener: (currencyCode: CurrencyCode) -> Unit) {
+    fun bind(
+        conversionBodyView: ConversionBodyView,
+        onClickListener: (currencyCode: CurrencyCode) -> Unit,
+        currentCurrencyCode: CurrencyCode
+    ) {
         val context = itemView.context
         itemView.setOnClickListener {
             onClickListener(conversionBodyView.baseCurrencyCode)
@@ -31,6 +35,13 @@ class SupportedCurrenciesViewHolder private constructor(
         itemView.textViewCountryCurrency.text =
             itemView.context.getString(conversionBodyView.currencyName)
 
+        val exchangeView = conversionBodyView.supportedCurrencies.find { currentCurrencyCode == it.currencyCode }
+
+        val defaultExchange = "1 ${currentCurrencyCode}"
+        val normalExchange = "${exchangeView?.purchaseValue} ${currentCurrencyCode}"
+
+        itemView.textViewExchange.text =
+            "1 ${conversionBodyView.baseCurrencyCode} = ${ if (exchangeView != null) normalExchange  else defaultExchange}"
 
     }
 }

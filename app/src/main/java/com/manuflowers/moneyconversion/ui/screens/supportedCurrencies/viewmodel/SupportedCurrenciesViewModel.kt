@@ -4,9 +4,7 @@ import com.manuflowers.domain.exchangeRates.GetExchangeRatesUseCase
 import com.manuflowers.moneyconversion.base.BaseViewModel
 import com.manuflowers.moneyconversion.ui.screens.supportedCurrencies.model.SupportedCurrenciesState
 
-class SupportedCurrenciesViewModel(
-    private val getExchangeRatesUseCase: GetExchangeRatesUseCase
-): BaseViewModel<SupportedCurrenciesState>() {
+class SupportedCurrenciesViewModel(): BaseViewModel<SupportedCurrenciesState>() {
 
     override val initialState: SupportedCurrenciesState = SupportedCurrenciesState()
 
@@ -14,5 +12,7 @@ class SupportedCurrenciesViewModel(
         viewState.value = initialState
     }
 
+    fun buildExchangeRate() {
 
+    }
 }
