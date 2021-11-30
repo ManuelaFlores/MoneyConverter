@@ -82,7 +82,6 @@ class ConversionCalculatorFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        // FIXME: hacer logica para que no escoga el pais del otro text field
         textViewSendMoneyLabel.setOnLongClickListener {
             mainViewModel.setOriginValue(isValueFromSendMoneyLabel = true)
             findNavController().navigate(R.id.action_conversionCalculator_to_supportedCurrenciesFragment)
@@ -130,6 +129,7 @@ class ConversionCalculatorFragment : Fragment() {
                     mainViewModel.state.currenciesList.peek()
                 )
                 editTextReceiveMoneyAmount.setText(viewModel.state.receiveMoneyConverted)
+                viewModel.changePurchaseAndSellValues(mainViewModel.state.currenciesList.peek())
             }
         }
     }
@@ -143,7 +143,7 @@ class ConversionCalculatorFragment : Fragment() {
                 } else {
                     textViewReceiveMoneyLabel.text = getString(viewModel.getLabel(it))
                 }
-                // viewModel.changeSendAndReceiveValues()
+                viewModel.changeSendAndReceiveValues()
             }
             viewModel.changePurchaseAndSellValues(mainViewState.currenciesList.peek())
         }
