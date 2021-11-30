@@ -1,6 +1,5 @@
 package com.manuflowers.moneyconversion.ui.screens.supportedCurrencies.list
 
-import android.util.Log
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.domain.exchangeRates.model.CurrencyCode

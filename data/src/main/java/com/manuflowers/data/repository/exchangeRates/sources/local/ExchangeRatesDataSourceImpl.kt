@@ -23,7 +23,6 @@ class ExchangeRatesDataSourceImpl(private val context: Context) : ExchangeRatesD
                 it.readText()
             }
             val parsedData = adapter.fromJson(jsonString)
-            Log.e("AAAAAAAAA", "${adapter.fromJson(jsonString)}")
             if (!parsedData.isNullOrEmpty()) {
                 Success(parsedData)
             } else {

@@ -13,4 +13,10 @@
     <string name="united_kingdom_currency_label">libras</string>
     <string name="switzerland_currency_label">Francos</string>
     <string name="canada_currency_label">Dólares C.</string>
+
+    <string name="purchase_and_sell_template">"Compra: %1$s| Venta: %2$s"</string>
+    <string name="start_your_operation">Empieza tu operación</string>
+    <string name="you_receive_hint">Tú recibes</string>
+    <string name="you_send">Tú envías</string>
+    <string name="change_send_and_receive_value">Change send and receive value</string>
 </resources>

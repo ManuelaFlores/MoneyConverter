@@ -12,3 +12,16 @@ fun String?.formatAmount(
     val value = if (this.isNullOrEmpty()) "0.0" else this
     return dFormat.format(BigDecimal(value))
 }
+
+fun String.formatTextFromEditable(): String {
+    return try {
+        val cleanString = this.replace("[,.]".toRegex(), "")
+        val parsed: BigDecimal =
+            BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_FLOOR).divide(
+                BigDecimal(100), BigDecimal.ROUND_FLOOR
+            )
+        DecimalFormat("#,###,##0.00", DecimalFormatSymbols(Locale.US)).format(parsed)
+    } catch (e: Exception) {
+        ""
+    }
+}

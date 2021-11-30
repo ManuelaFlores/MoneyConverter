@@ -7,26 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.manuflowers.domain.exchangeRates.model.CurrencyCode
 import com.manuflowers.moneyconversion.R
 import com.manuflowers.moneyconversion.ui.model.MainViewState
 import com.manuflowers.moneyconversion.ui.screens.supportedCurrencies.list.SupportedCurrenciesAdapter
-import com.manuflowers.moneyconversion.ui.screens.supportedCurrencies.viewmodel.SupportedCurrenciesViewModel
 import com.manuflowers.moneyconversion.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_supported_currencies.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SupportedCurrenciesFragment : Fragment() {
 
     private val mainViewModel by sharedViewModel<MainViewModel>()
 
-    private val viewModel by viewModel<SupportedCurrenciesViewModel>()
-
-    private val supportedCurrenciesAdapter  by lazy {
-        SupportedCurrenciesAdapter(currentCurrencyCode = mainViewModel.state.newCurrencySelected.peek(), onCLickListener = {
-            mainViewModel.setNewCurrency(it)
-            findNavController().popBackStack()
-        })
+    private val supportedCurrenciesAdapter by lazy {
+        SupportedCurrenciesAdapter(
+            currentCurrencyCode = mainViewModel.state.newCurrencySelected.peek(),
+            onCLickListener = ::onNewCurrencySelected
+        )
     }
 
     override fun onCreateView(
@@ -53,6 +50,13 @@ class SupportedCurrenciesFragment : Fragment() {
         supportedCurrenciesAdapter.addData(mainViewModel.state.currenciesList.peek())
     }
 
+    private fun onNewCurrencySelected(
+        currentCurrencyCode: CurrencyCode
+    ) {
+        mainViewModel.setNewCurrency(currentCurrencyCode)
+        findNavController().popBackStack()
+    }
+
     private fun observeSharedState(onSharedStateChanged: (sharedState: MainViewState) -> Unit) {
         val observer = Observer<MainViewState> { mainViewState ->
             onSharedStateChanged.invoke(mainViewState)
@@ -61,6 +65,5 @@ class SupportedCurrenciesFragment : Fragment() {
     }
 
     private fun onSharedStateChange(mainViewState: MainViewState) {
-
     }
 }

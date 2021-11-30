@@ -3,13 +3,11 @@ package com.manuflowers.moneyconversion.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.manuflowers.domain.exchangeRates.GetExchangeRatesUseCase
-import com.manuflowers.domain.exchangeRates.model.ConversionBodyEntity
 import com.manuflowers.domain.exchangeRates.model.CurrencyCode
 import com.manuflowers.domain.utils.Error
 import com.manuflowers.domain.utils.Success
 import com.manuflowers.moneyconversion.base.BaseViewModel
 import com.manuflowers.moneyconversion.base.SingleEvent
-import com.manuflowers.moneyconversion.ui.model.ConversionBodyView
 import com.manuflowers.moneyconversion.ui.model.MainViewState
 import com.manuflowers.moneyconversion.ui.utils.formatAmount
 import kotlinx.coroutines.launch
@@ -47,6 +45,13 @@ class MainViewModel(
     fun setNewCurrency(currency: CurrencyCode) {
         state = state.copy(newCurrencySelected = SingleEvent(currency))
     }
+
+   /* fun setPurchaseAndSellValues(purchaseValue: Float, sellValue: Float) {
+        state = state.copy(
+            currentPurchaseValue = purchaseValue.toString().formatAmount(),
+            currentSellValue = sellValue.toString().formatAmount()
+        )
+    }*/
 
     fun setOriginValue(isValueFromSendMoneyLabel: Boolean) {
         state = state.copy(

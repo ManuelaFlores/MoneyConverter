@@ -2,7 +2,6 @@ package com.manuflowers.moneyconversion.ui.screens.conversionCalculator
 
 import android.os.Bundle
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.manuflowers.moneyconversion.ui.model.MainViewState
 import com.manuflowers.moneyconversion.ui.screens.conversionCalculator.model.ConversionCalculatorState
 import com.manuflowers.moneyconversion.ui.screens.conversionCalculator.viewmodel.ConversionCalculatorViewModel
 import com.manuflowers.moneyconversion.ui.utils.MoneyTextWatcher
+import com.manuflowers.moneyconversion.ui.utils.formatTextFromEditable
 import com.manuflowers.moneyconversion.ui.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.fragment_conversion_calculator.*
 import org.koin.android.ext.android.inject
@@ -45,19 +45,20 @@ class ConversionCalculatorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
-        onAmountReceiveMoneyWatcher = object : MoneyTextWatcher(editTextReceiveMoneyAmount) {
-            override fun updateText(editText: EditText, formatted: String) {
-                viewModel.validateReceiveMoney(formatted, mainViewModel.state.currenciesList.peek())
-                super.updateText(editText, formatted)
-                editTextSendMoneyAmount.setText(viewModel.state.sendMoneyConvertedAmount)
-            }
-        }
 
         onAmountSendMoneyWatcher = object : MoneyTextWatcher(editTextSendMoneyAmount) {
             override fun updateText(editText: EditText, formatted: String) {
                 viewModel.validateSentMoney(formatted, mainViewModel.state.currenciesList.peek())
                 super.updateText(editText, formatted)
                 editTextReceiveMoneyAmount.setText(viewModel.state.receiveMoneyConverted)
+            }
+        }
+
+        onAmountReceiveMoneyWatcher = object : MoneyTextWatcher(editTextReceiveMoneyAmount) {
+            override fun updateText(editText: EditText, formatted: String) {
+                viewModel.validateReceiveMoney(formatted, mainViewModel.state.currenciesList.peek())
+                super.updateText(editText, formatted)
+                editTextSendMoneyAmount.setText(viewModel.state.sendMoneyConvertedAmount)
             }
         }
 
@@ -75,17 +76,25 @@ class ConversionCalculatorFragment : Fragment() {
             }
         }
         textViewSendMoneyLabel.text =
-            getString(viewModel.getLabel(viewModel.state.senMoneyCurrency))
+            getString(viewModel.getLabel(viewModel.state.sendMoneyCurrency))
         textViewReceiveMoneyLabel.text =
             getString(viewModel.getLabel(viewModel.state.receiveMoneyCurrency))
     }
 
     private fun setupListeners() {
+        // FIXME: hacer logica para que no escoga el pais del otro text field
         textViewSendMoneyLabel.setOnLongClickListener {
             mainViewModel.setOriginValue(isValueFromSendMoneyLabel = true)
-
             findNavController().navigate(R.id.action_conversionCalculator_to_supportedCurrenciesFragment)
             true
+        }
+        textViewReceiveMoneyLabel.setOnLongClickListener {
+            mainViewModel.setOriginValue(isValueFromSendMoneyLabel = false)
+            findNavController().navigate(R.id.action_conversionCalculator_to_supportedCurrenciesFragment)
+            true
+        }
+        changeValuesImageView.setOnClickListener {
+            viewModel.changeSendAndReceiveValues()
         }
     }
 
@@ -105,29 +114,38 @@ class ConversionCalculatorFragment : Fragment() {
     }
 
     private fun onStateChanged(conversionCalculatorState: ConversionCalculatorState) {
-
-    }
-
-    private fun onSharedStateChange(mainViewState: MainViewState) {
-        mainViewState.newCurrencySelected?.consume()?.let {
-            mainViewModel.state.isValueFromSendMoney?.let { isValueFromSendMoney ->
-                viewModel.changeCurrencyOfSendMoney(it, isValueFromSendMoney)
-                if (isValueFromSendMoney) {
-                    textViewSendMoneyLabel.text = getString(viewModel.getLabel(it))
-
-                    Log.e("-------------", "${it} ---- ${mainViewState.newCurrencySelected.peek()}")
-                    Log.e("SEND_ MONEY CURRENCY", "${viewModel.state.senMoneyCurrency}")
-                    Log.e("SEND_ MONEY CURRENCY", "")
-                } else {
-                    textViewReceiveMoneyLabel.text = getString(viewModel.getLabel(it))
-                    editTextReceiveMoneyAmount.setText(viewModel.state.receiveMoneyConverted)
-                }
+        textViewPurchaseAndSellBase.text = getString(
+            R.string.purchase_and_sell_template,
+            conversionCalculatorState.currentPurchaseValue,
+            conversionCalculatorState.currentSellValue
+        )
+        conversionCalculatorState.shouldUpdateReceiveValue.consume()?.let {
+            if (it) {
+                textViewSendMoneyLabel.text =
+                    getString(viewModel.getLabel(viewModel.state.sendMoneyCurrency))
+                textViewReceiveMoneyLabel.text =
+                    getString(viewModel.getLabel(viewModel.state.receiveMoneyCurrency))
+                viewModel.validateSentMoney(
+                    editTextSendMoneyAmount.text.toString().formatTextFromEditable(),
+                    mainViewModel.state.currenciesList.peek()
+                )
+                editTextReceiveMoneyAmount.setText(viewModel.state.receiveMoneyConverted)
             }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e("DESTROY", "--------")
+    private fun onSharedStateChange(mainViewState: MainViewState) {
+        mainViewState.newCurrencySelected.consume()?.let {
+            mainViewModel.state.isValueFromSendMoney?.let { isValueFromSendMoney ->
+                viewModel.changeCurrencyOfSendMoney(it, isValueFromSendMoney)
+                if (isValueFromSendMoney) {
+                    textViewSendMoneyLabel.text = getString(viewModel.getLabel(it))
+                } else {
+                    textViewReceiveMoneyLabel.text = getString(viewModel.getLabel(it))
+                }
+                // viewModel.changeSendAndReceiveValues()
+            }
+            viewModel.changePurchaseAndSellValues(mainViewState.currenciesList.peek())
+        }
     }
 }

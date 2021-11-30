@@ -9,9 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
-import java.math.BigDecimal
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 
@@ -51,10 +48,7 @@ open class MoneyTextWatcher(
 
         moneyTextJob = launch(Dispatchers.IO) {
             try {
-                val cleanString = s.replace("[,.]".toRegex(), "")
-                val parsed: BigDecimal = BigDecimal(cleanString).setScale(2, BigDecimal.ROUND_FLOOR).divide(
-                    BigDecimal(100), BigDecimal.ROUND_FLOOR)
-                val formatted: String = DecimalFormat("#,###,##0.00", DecimalFormatSymbols(Locale.US)).format(parsed)
+                val formatted = s.formatTextFromEditable()
                 launch(Dispatchers.Main) {
                     editText.removeTextChangedListener(this@MoneyTextWatcher)
                     updateText(editText, formatted)

@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.manuflowers.domain.exchangeRates.model.CurrencyCode
+import com.manuflowers.domain.exchangeRates.model.SupportedCurrencyEntity
 import com.manuflowers.moneyconversion.R
 import com.manuflowers.moneyconversion.ui.model.ConversionBodyView
 import kotlinx.android.synthetic.main.item_supported_currency.view.*
@@ -26,6 +27,9 @@ class SupportedCurrenciesViewHolder private constructor(
         currentCurrencyCode: CurrencyCode
     ) {
         val context = itemView.context
+
+        val exchangeView = conversionBodyView.supportedCurrencies.find { currentCurrencyCode == it.currencyCode }
+
         itemView.setOnClickListener {
             onClickListener(conversionBodyView.baseCurrencyCode)
         }
@@ -34,8 +38,6 @@ class SupportedCurrenciesViewHolder private constructor(
         itemView.imageViewFlagCurrency.setImageResource(imageResource)
         itemView.textViewCountryCurrency.text =
             itemView.context.getString(conversionBodyView.currencyName)
-
-        val exchangeView = conversionBodyView.supportedCurrencies.find { currentCurrencyCode == it.currencyCode }
 
         val defaultExchange = "1 ${currentCurrencyCode}"
         val normalExchange = "${exchangeView?.purchaseValue} ${currentCurrencyCode}"
